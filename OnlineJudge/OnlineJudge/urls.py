@@ -18,14 +18,19 @@ from django.contrib import admin
 from rest_framework import routers
 
 
-from users.views import UsersViewSet
+from users.views import UsersViewSet,UserChangePasswordViewSet
+from problem.views import ProblemViewSet
 
 
 
 router = routers.DefaultRouter()
 
 #配置user的url
-router.register(r'user',UsersViewSet,base_name="user")
+router.register(r'user',UsersViewSet,base_name="user") #用户信息注册
+router.register(r'changepw',UserChangePasswordViewSet,base_name="changepw")
+
+#配置problem的url
+router.register(r'problem',ProblemViewSet,base_name="problem")
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
